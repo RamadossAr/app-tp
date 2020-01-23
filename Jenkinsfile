@@ -8,7 +8,7 @@ node {
           docker.build("$IMAGE",  '.')
     }
 
-    }
+   
     stage('Push') {
           docker.withRegistry('', 'docker-hub-credentials') {
               img.push 'latest'
