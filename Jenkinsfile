@@ -7,10 +7,7 @@ node {
     def img = stage('Build') {
           docker.build("$IMAGE",  '.')
     }
-    stage('Run') {
-          img.withRun("--name run-$BUILD_ID -p 80:80") { c ->
-            sh 'curl localhost'
-          }
+
     }
     stage('Push') {
           docker.withRegistry('', 'docker-hub-credentials') {
